@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Gift For You</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, #ff69b4, #9932cc);
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .container {
+            text-align: center;
+            perspective: 1000px;
+        }
+
+        .gift-box {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(135deg, #ffd700, #ff69b4);
+            position: relative;
+            margin: 20px auto;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 1.5s;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .gift-box.opened {
+            transform: rotateY(180deg);
+        }
+
+        .gift-lid {
+            width: 270px;
+            height: 50px;
+            background: linear-gradient(135deg, #ffd700, #ff1493);
+            position: absolute;
+            top: -50px;
+            left: -10px;
+            border-radius: 10px 10px 0 0;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+        }
+
+        .gift-ribbon {
+            width: 50px;
+            height: 50px;
+            background: #ff1493;
+            position: absolute;
+            top: -25px;
+            left: 100px;
+            transform: rotate(45deg);
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        .gift-ribbon::before {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 20px;
+            background: #ff1493;
+            top: 15px;
+            left: -10px;
+            transform: rotate(-90deg);
+        }
+
+        .rose {
+            display: none;
+            width: 120px;
+            height: 120px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: float 3s infinite ease-in-out;
+            filter: drop-shadow(0 0 10px rgba(255,105,180,0.5));
+        }
+
+        .message {
+            display: none;
+            color: white;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            line-height: 1.8;
+            font-size: 24px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            transform: scale(0);
+            animation: messageAppear 1s forwards;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(-50%, -50%) translateY(0) rotate(5deg); }
+            50% { transform: translate(-50%, -50%) translateY(-30px) rotate(-5deg); }
+        }
+
+        @keyframes messageAppear {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .gift-box:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="gift-box" onclick="openGift()">
+            <div class="gift-lid"></div>
+            <div class="gift-ribbon"></div>
+        </div>
+        <img src="https://i.imgur.com/8YKwqJe.png" class="rose" alt="Rose">
+        <div class="message">
+            Happy Birthday Meri Gadhi ❤️<br><br>
+            I love you so much! I am so sorry for everything jo mene galt kiya. Please aaj ke din mat rona. 
+            Thoda sa smile kar lena dekh ke.<br><br>
+            Tum bhut achhi ho, sayad hum hi thoda pagal hai, phir bhi tumhara hi pagal hu na. 
+            Aaj ke baad bita huwa kal yaad na kar ke ek achha sa jindgi ka soch le ke aage badhna.<br><br>
+            Hum tumhare sath hai gadhi, chahe jo bhi ho, kitno bhi jhagad le lekin kabhi chhor ke nhi jayenge. 
+            Tumhara ankh jo aaj suraj ke rosni me chamak rha tha wo humko bhut achha lagta hai.<br><br>
+            I Love You So Much! ❤️
+        </div>
+    </div>
+
+    <script>
+        function openGift() {
+            document.querySelector('.gift-box').classList.add('opened');
+            setTimeout(() => {
+                document.querySelector('.rose').style.display = 'block';
+                document.querySelector('.message').style.display = 'block';
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
